@@ -8,7 +8,7 @@ Each entry links to its detailed advisory markdown file.
 
 ## Advisories
 
-| Advisory ID | Product | Title | CVE |
+| Advisory ID | Product | Title | CVE or Reference |
 |--------------|----------|----------|-----|
 | MCSAID-2025-009 | [RUCKUS Network Director (RND)](https://support.ruckuswireless.com/products/156-ruckus-network-director-rnd) | Critical Security Bypass Vulnerability Leading to Remote Code Execution and Shell Access in RUCKUS Network Director (RND) | *(Pending)* [1](https://support.ruckuswireless.com/security_bulletins/334) |
 | [MCSAID-2025-008](./advisories/MCSAID-2025-008-proxychains-ng-stack-buffer-overflow-proxy_from_string.md) | [proxychains-ng](https://github.com/rofl0r/proxychains-ng) | [Stack Buffer Overflow in proxy_from_string() leads to arbitrary code execution and/or crash](./advisories/MCSAID-2025-008-proxychains-ng-stack-buffer-overflow-proxy_from_string.md) | *(Pending)* |
