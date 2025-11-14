@@ -1,7 +1,7 @@
 # radare2: NULL Pointer Dereference in `load()` (bin_dyldcache.c) Leads to Denial of Service
 
 - **Advisory ID:** MCSAID-2025-002
-- **CVE ID:** *(Pending MITRE Assignment)*
+- **CVE ID:** CVE-2025-63744
 - **Reported:** 2025-10-07
 - **Published:** 2025-10-08
 - **Fixed:** 2025-10-08
