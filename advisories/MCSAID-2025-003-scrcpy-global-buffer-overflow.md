@@ -1,7 +1,7 @@
 # scrcpy: Global-Buffer Overflow in `sc_read32be` via `sc_device_msg_deserialize` / `process_msgs`
 
 - **Advisory ID:** MCSAID-2025-003
-- **CVE ID:** *(pending)*
+- **CVE ID:** [CVE-2025-34449](https://www.cve.org/CVERecord?id=CVE-2025-34449)
 - **Product:** [scrcpy](https://github.com/Genymobile/scrcpy)
 - **Reported:** 2025-10-09
 - **Published:** 2025-10-09
@@ -25,10 +25,12 @@ When processing crafted messages, the code may read beyond the bounds of a globa
 | Version / Commit  | Status                                |
 | ----------------- | ------------------------------------- |
 | 3.3.3 and earlier | Vulnerable                            |
+| 3.3.4  | Not vulnerable                            |
 | prior to commit 3e40b2473772cea3a23d4932088fd0bc4cc0f52c  | Vulnerable             |
 | commit 3e40b2473772cea3a23d4932088fd0bc4cc0f52c applied  | Not vulnerable |
 
 The issue is present in stable release 3.3.3 and also in git master until 3e40b2473772cea3a23d4932088fd0bc4cc0f52c patch.
+Fixed in 3.3.4.
 
 ---
 

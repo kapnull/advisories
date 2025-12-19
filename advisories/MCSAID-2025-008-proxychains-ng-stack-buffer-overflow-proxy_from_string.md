@@ -1,7 +1,7 @@
 # proxychains-ng: Stack-based buffer overflow in `proxy_from_string()` (src/libproxychains.c)
 
 - **Advisory ID:** MCSAID-2025-008
-- **CVE ID:** *(Pending)*
+- **CVE ID:** [CVE-2025-34451](https://www.cve.org/CVERecord?id=CVE-2025-34451)
 - **Product:** [proxychains-ng](https://github.com/rofl0r/proxychains-ng)
 - **Reported:** 2025-10-18.
 - **Published:** 2025-10-20.

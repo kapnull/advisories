@@ -1,7 +1,7 @@
 # rtl_433: Stack-based Buffer Overflow in `parse_rfraw()` (src/rfraw.c) Leads to Denial of Service / Memory Corruption
 
 - **Advisory ID:** MCSAID-2025-004
-- **CVE ID:** *(Pending)*
+- **CVE ID:** [CVE-2025-34450](https://www.cve.org/CVERecord?id=CVE-2025-34450)
 - **Product:** [rtl_433](https://github.com/merbanan/rtl_433)
 - **Reported:** 2025-10-08
 - **Published:** 2025-10-08
@@ -25,6 +25,7 @@ This issue was resolved in commit [`25e47f8` (closes issue #3375)](https://githu
 | Version | Status |
 |---|---|
 | 25.02 and earlier | Vulnerable |
+| 25.12  | Patched |
 | prior to commit `25e47f8` | Vulnerable |
 | including and after commit `25e47f8` | Patched |
 
