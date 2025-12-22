@@ -55,9 +55,24 @@ if (kf->kiss_len < MAX_KISS_LEN - 1)
 
 By reducing the collection limit by one byte, there is adequate room for appending the terminating FEND byte without overflowing the buffer. The fix is available in commit `694c95485b21c1c22bc4682703771dec4d7a374b`.
 
-AddressSanitizer detection output shows:
+Full Asan Output:
 ```
-stack-buffer-overflow at offset 2171 on the 'unwrapped' variable
+==3579451==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x70f7d5c9787b at pc 0x5ef775f12465 bp 0x70f7d74671d0 sp 0x70f7d74671c0
+WRITE of size 1 at 0x70f7d5c9787b thread T17
+ #0 0x5ef775f12464 in kiss_unwrap /htp/direwolf/direwolf/src/kiss_frame.c:322
+ #1 0x5ef775f14081 in kiss_rec_byte /htp/direwolf/direwolf/src/kiss_frame.c:467
+ #2 0x5ef775f160d1 in kissnet_listen_thread /htp/direwolf/direwolf/src/kissnet.c:983
+ #3 0x70f7ee65ea41 in asan_thread_start ../../../../src/libsanitizer/asan/asan_interceptors.cpp:234
+ #4 0x70f7ed69caa3 in start_thread nptl/pthread_create.c:447
+ #5 0x70f7ed729c6b in clone3 ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Address 0x70f7d5c9787b is located in stack of thread T17 at offset 2171 in frame
+ #0 0x5ef775f139df in kiss_rec_byte /htp/direwolf/direwolf/src/kiss_frame.c:388
+
+ This frame has 1 object(s):
+  [48, 2171) 'unwrapped' (line 446) <== Memory access at offset 2171 overflows this variable
+
+SUMMARY: AddressSanitizer: stack-buffer-overflow /htp/direwolf/direwolf/src/kiss_frame.c:322 in kiss_unwrap
 ```
 
 ---
