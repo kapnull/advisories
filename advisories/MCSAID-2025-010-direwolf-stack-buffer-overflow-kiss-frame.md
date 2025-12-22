@@ -22,7 +22,7 @@ A stack-based buffer overflow vulnerability exists in Dire Wolf in the function 
 
 | Version                                       | Status                    |
 | --------------------------------------------- | ------------------------- |
-| 1.8 (latest release at time of reporting)     | Vulnerable |
+| 1.8.1 (latest release at time of reporting)   | Vulnerable |
 | Git master prior to commit `694c954`          | Vulnerable |
 | Including and after commit `694c95485b21c1c…` | Patched  |
 
@@ -73,6 +73,52 @@ Address 0x70f7d5c9787b is located in stack of thread T17 at offset 2171 in frame
   [48, 2171) 'unwrapped' (line 446) <== Memory access at offset 2171 overflows this variable
 
 SUMMARY: AddressSanitizer: stack-buffer-overflow /htp/direwolf/direwolf/src/kiss_frame.c:322 in kiss_unwrap
+```
+
+Full Asan Output of 1.8.1:
+
+```
+KISS frame should end with FEND.
+KISS frame should not have FEND in the middle.
+=================================================================
+==714631==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x707054b6487b at pc 0x60ae137e2525 bp 0x7070558631d0 sp 0x7070558631c0
+WRITE of size 1 at 0x707054b6487b thread T17
+    #0 0x60ae137e2524 in kiss_unwrap /htp/direwolf/direwolf-1.8.1/src/kiss_frame.c:322
+    #1 0x60ae137e4141 in kiss_rec_byte /htp/direwolf/direwolf-1.8.1/src/kiss_frame.c:467
+    #2 0x60ae137e6191 in kissnet_listen_thread /htp/direwolf/direwolf-1.8.1/src/kissnet.c:983
+    #3 0x70706c85ea41 in asan_thread_start ../../../../src/libsanitizer/asan/asan_interceptors.cpp:234
+    #4 0x70706b69caa3 in start_thread nptl/pthread_create.c:447
+    #5 0x70706b729c6b in clone3 ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
+
+Address 0x707054b6487b is located in stack of thread T17 at offset 2171 in frame
+    #0 0x60ae137e3a9f in kiss_rec_byte /htp/direwolf/direwolf-1.8.1/src/kiss_frame.c:388
+
+  This frame has 1 object(s):
+    [48, 2171) 'unwrapped' (line 446) <== Memory access at offset 2171 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+Thread T17 created by T0 here:
+    #0 0x70706c8f51f9 in pthread_create ../../../../src/libsanitizer/asan/asan_interceptors.cpp:245
+    #1 0x60ae137e733d in kissnet_init_one /htp/direwolf/direwolf-1.8.1/src/kissnet.c:354
+    #2 0x60ae137e733d in kissnet_init /htp/direwolf/direwolf-1.8.1/src/kissnet.c:274
+    #3 0x60ae1373b6be in main /htp/direwolf/direwolf-1.8.1/src/direwolf.c:1138
+    #4 0x70706b62a1c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x70706b62a28a in __libc_start_main_impl ../csu/libc-start.c:360
+    #6 0x60ae13747094 in _start (/htp/direwolf/direwolf-1.8.1/build/src/direwolf+0x64094) (BuildId: c3192edd1a724baea713a0f1c5add7e4657d33c0)
+
+SUMMARY: AddressSanitizer: stack-buffer-overflow /htp/direwolf/direwolf-1.8.1/src/kiss_frame.c:322 in kiss_unwrap
+Shadow bytes around the buggy address:
+  0x707054b64580: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x707054b64800: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00[03]
+  0x707054b64880: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x707054b64900: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x707054b64a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 ```
 
 ---

