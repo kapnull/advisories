@@ -1,4 +1,4 @@
-# scrcpy: Global-Buffer Overflow in `sc_read32be` via `sc_device_msg_deserialize` / `process_msgs`
+# scrcpy: Global-Buffer Overflow in `sc_device_msg_deserialize`
 
 - **Advisory ID:** MCSAID-2025-003
 - **CVE ID:** [CVE-2025-34449](https://www.cve.org/CVERecord?id=CVE-2025-34449)
@@ -14,9 +14,7 @@
 
 ## Summary
 
-A global buffer overflow vulnerability has been discovered in `scrcpy` in the function `sc_read32be`, invoked via `sc_device_msg_deserialize()` and `process_msgs()`.
-
-When processing crafted messages, the code may read beyond the bounds of a global buffer, leading to memory corruption or crashes. Under AddressSanitizer (ASan), the flaw is reproducible, showing a “global-buffer-overflow” error.
+Scrcpy contain a buffer overflow vulnerability in the sc_device_msg_deserialize() function. A compromised device can send crafted messages that cause out-of-bounds reads, which may result in memory corruption or a denial-of-service condition. This vulnerability may allow further exploitation on the host system.
 
 ---
 
@@ -37,6 +35,8 @@ Fixed in 3.3.4.
 ## Technical Details
 
 In `sc_device_msg_deserialize()` (in `device_msg.c`, around line 24), the code reads a 32-bit big-endian integer via `sc_read32be` without sufficient bounds checking. Because the buffer is a global array in `receiver.c` (variable `buf`), a malformed payload may lead to reading past the end of that buffer, triggering a global-buffer-overflow.
+
+When processing crafted messages, the code may read beyond the bounds of a global buffer, leading to memory corruption or crashes. Under AddressSanitizer (ASan), the flaw is reproducible, showing a “global-buffer-overflow” error.
 
 Under ASan, the overflow was detected with a stack trace similar to:
 
