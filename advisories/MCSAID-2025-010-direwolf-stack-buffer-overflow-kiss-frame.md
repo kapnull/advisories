@@ -1,7 +1,7 @@
 # Dire Wolf: Stack-based Buffer Overflow in KISS Frame Processing (src/kiss_frame.c)
 
 - **Advisory ID:** MCSAID-2025-010
-- **CVE ID:** TBD
+- **CVE ID:** [CVE-2025-34457](https://www.cve.org/CVERecord?id=CVE-2025-34457)
 - **Product:** [Dire Wolf](https://github.com/wb2osz/direwolf)
 - **Reported:** 2025-11-04
 - **Published:** 2025-11-16

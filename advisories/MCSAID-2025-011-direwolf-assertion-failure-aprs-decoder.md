@@ -1,7 +1,7 @@
 # Dire Wolf: Assertion Failure in APRS MIC-E Decoder Leads to Denial of Service (src/decode_aprs.c)
 
 - **Advisory ID:** MCSAID-2025-011
-- **CVE ID:** TBD
+- **CVE ID:** [CVE-2025-34458](https://www.cve.org/CVERecord?id=CVE-2025-34458)
 - **Product:** [Dire Wolf](https://github.com/wb2osz/direwolf)
 - **Reported:** 2025-11-04
 - **Published:** 2025-11-07
