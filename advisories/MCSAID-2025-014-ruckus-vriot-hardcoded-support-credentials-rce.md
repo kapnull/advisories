@@ -1,6 +1,6 @@
 # RUCKUS vRIoT: Remote Root Access via Hardcoded Credentials for the support User
 
-- **Advisory ID:** MCSAID-2025-XXX
+- **Advisory ID:** MCSAID-2025-014
 - **CVE ID:** CVE-2025-69426
 - **Product:** RUCKUS IoT Controller (https://support.ruckuswireless.com/products/152-ruckus-iot-controller#f-product-facet=vRIoT)
 - **Reported:** 2025-11-24
