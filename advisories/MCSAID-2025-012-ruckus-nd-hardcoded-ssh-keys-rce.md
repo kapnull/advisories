@@ -1,6 +1,6 @@
 # RUCKUS Network Director: Hardcoded SSH Keys for the postgres User
 
-- **Advisory ID:** MCSAID-2025-XXX
+- **Advisory ID:** MCSAID-2025-012
 - **CVE ID:** CVE-2025-67305
 - **Product:** RUCKUS Network Director (https://support.ruckuswireless.com/products/156-ruckus-network-director-rnd#f-product-facet=RND)
 - **Reported:** 2025-09-24
