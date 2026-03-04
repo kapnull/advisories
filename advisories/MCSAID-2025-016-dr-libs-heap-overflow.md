@@ -1,7 +1,7 @@
 # dr_libs dr_wav.h: Heap Buffer Overflow in smpl Chunk Metadata Parsing
 
-- **CVE ID:** Pending Assignment
-- **Product:** dr_libs (https://github.com/mackron/dr_libs)
+- **CVE ID:** [CVE-2026-29022](https://www.cve.org/CVERecord?id=CVE-2026-29022)
+- **Product:** [dr_libs](https://github.com/mackron/dr_libs)
 - **Reported:** 2026-02-27
 - **Published:** 2026-02-28
 - **Severity:** Medium (Denial of Service)
