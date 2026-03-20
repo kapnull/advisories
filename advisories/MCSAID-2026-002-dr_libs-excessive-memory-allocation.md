@@ -109,7 +109,7 @@ clang -fsanitize=address -O1 -g -o repro_main repro_main.c
 ./repro_main
 ```
 
-[INSERT repro_main REPRO HERE]
+[repro_main.c](./MCSAID-2026-002-repro_main.c)
 
 **Output:**
 ```
