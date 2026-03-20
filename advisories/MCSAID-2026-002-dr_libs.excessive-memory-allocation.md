@@ -30,7 +30,7 @@ Awaiting fix.
 
 The vulnerability was found by fuzzing `drflac_open_memory_with_metadata` with libFuzzer. A 54-byte minimized crash input (`minimized_oom.flac`) was produced.
 
-[INSERT POC FILES HERE]
+[PoC.zip](./advisories/MCSAID-2026-002-PoC.zip)
 
 ```
 clang -fsanitize=address,undefined,fuzzer -O1 -g -o repro repro.c
