@@ -222,5 +222,5 @@ A crafted WAV file with an unterminated BEXT coding history field causes ma_dr_w
 
 ## References
 
-- GitHub Issue: [Heap buffer overflow (read) in ma_dr_wav__strlen (miniaudio.h:80659))](https://github.com/mackron/miniaudio/issues/1101)
+- GitHub Issue: [Heap buffer overflow (read) in ma_dr_wav__strlen (miniaudio.h:80659)](https://github.com/mackron/miniaudio/issues/1101)
 
