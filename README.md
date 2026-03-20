@@ -10,6 +10,7 @@ Each entry links to its detailed advisory markdown file.
 
 | Advisory ID | Product | Title | CVE or Reference |
 |--------------|----------|----------|-----|
+| [MCSAID-2026-003](./advisories/MCSAID-2026-003-miniaudio-out-of-bounds-read.md) | [miniaudio](https://github.com/mackron/miniaudio) | [miniaudio Out-of-Bounds Read in BEXT Coding History Parsing](./advisories/MCSAID-2026-003-miniaudio-out-of-bounds-read.md) | [CVE-2026-32837](https://www.cve.org/CVERecord?id=CVE-2026-32837) |
 | [MCSAID-2026-002](./advisories/MCSAID-2026-002-dr_libs-excessive-memory-allocation.md) | [dr_libs](https://github.com/mackron/dr_libs) | [dr_libs Excessive Memory Allocation in PICTURE Metadata Parsing](./advisories/MCSAID-2026-002-dr_libs-excessive-memory-allocation.md) | [CVE-2026-32836](https://www.cve.org/CVERecord?id=CVE-2026-32836) |
 | [MCSAID-2026-001](./advisories/MCSAID-2026-001-dr-libs-heap-overflow.md) | [dr_libs](https://github.com/mackron/dr_libs) | [Heap overflow leads to Denial of Service](./advisories/MCSAID-2026-001-dr-libs-heap-overflow.md) | [CVE-2026-29022](https://www.cve.org/CVERecord?id=CVE-2026-29022) |
 | [MCSAID-2025-015](./advisories/MCSAID-2025-015-isc-bind-assertion-failure-hhit-brid.md) | [ISC BIND](https://www.isc.org/bind/) | [Assertion Failure in HHIT/BRID leads to Denial of Service](./advisories/MCSAID-2025-015-isc-bind-assertion-failure-hhit-brid.md) | [CVE-2025-13878](https://www.cve.org/CVERecord?id=CVE-2025-13878) |
