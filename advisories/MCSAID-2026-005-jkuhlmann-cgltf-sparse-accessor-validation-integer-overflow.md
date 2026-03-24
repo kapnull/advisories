@@ -1,4 +1,4 @@
-# jkuhlmann / cgltf Integer Overflow in Sparse Accessor Validation Leads to Heap Buffer Overflow on Read
+# jkuhlmann / cgltf <= 1.15 Sparse Accessor Validation Integer Overflow
 
 - **CVE ID:** [CVE-2026-32845](https://www.cve.org/CVERecord?id=CVE-2026-32845)
 - **Product:** [cgltf](https://github.com/jkuhlmann/cgltf)
