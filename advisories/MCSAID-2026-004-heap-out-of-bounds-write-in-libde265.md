@@ -1,6 +1,6 @@
 # heap out-of-bounds write in libde265 1.0.16
 
-- **CVE ID:** [CVE-2026-33165](https://www.cve.org/CVERecord?id=CVE-2026-33165) *Reserved status*
+- **CVE ID:** [CVE-2026-33165](https://www.cve.org/CVERecord?id=CVE-2026-33165)
 - **Product:** [libde265](https://github.com/strukturag/libde265)
 - **Reported:** 2026-03-15
 - **Published:** 2026-03-17
